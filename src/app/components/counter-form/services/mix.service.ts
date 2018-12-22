@@ -16,18 +16,9 @@ export class MixService {
    *              If the maximum is in s1 as well as in s2 the prefix is =:.
    */
   public mix(string1: string, string2: string): string {
-    let counter1, counter2;
-
-    if (string1) {
-      counter1 = new LowerCaseCounter(string1);
-      console.log(counter1);
-    }
-    if (string2) {
-      counter2 = new LowerCaseCounter(string2);
-      console.log(counter2);
-    }
-
-    const keys = this.mergeArrays(counter1.keys, counter2.keys);
+    const counter1 = new LowerCaseCounter(string1);
+    const counter2 = new LowerCaseCounter(string2);
+    const keys = Array.from(new Set([...Array.from(counter1.keys), ...Array.from(counter2.keys)]));
     const result = [];
 
     for (let i = 0; i < keys.length; i++) {
@@ -57,20 +48,6 @@ export class MixService {
       result = '=:' + str1;
     }
     return result;
-  }
-
-  /**
-   * @description merge tow arrays without repeating values
-   */
-  private mergeArrays(array1: Array<string>, array2: Array<string>): Array<string> {
-    const array = [...array1, ...array2];
-    const unique = {};
-    array.forEach(function(i) {
-      if (!unique[i]) {
-        unique[i] = true;
-      }
-    });
-    return Object.keys(unique);
   }
 
   private sortByLength(array: Array<string>): Array<string> {
