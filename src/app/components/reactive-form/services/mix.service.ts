@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { LetterRepeated } from './letterRepeated.model';
 
 @Injectable({
   providedIn: 'root',
@@ -30,10 +29,11 @@ export class MixService {
     }
 
     keysArray = this.mergeArrays(keys1, keys2);
+    console.log('Keys', keysArray);
 
     for (let i = 0; i < keysArray.length; i++) {
-      if ((result1[keysArray[i]] && result1[keysArray[i]].repetitions > 1)
-       || (result2[keysArray[i]] && result2[keysArray[i]].repetitions > 1)) {
+      if ((result1[keysArray[i]] && result1[keysArray[i]].length > 1)
+       || (result2[keysArray[i]] && result2[keysArray[i]].length > 1)) {
         result.push(this.getResultByLetter(result1[keysArray[i]], result2[keysArray[i]]));
       }
     }
@@ -48,12 +48,7 @@ export class MixService {
   private getLowerCaseRepeated(string: string) {
     const array = string.match(/[a-z]/g);
     const result = array.reduce((counter, letter) => {
-      if (counter[letter]) {
-        counter[letter].repetitions = counter[letter].repetitions + 1;
-        counter[letter].chain = counter[letter].chain + letter;
-      } else {
-        counter[letter] = new LetterRepeated(letter, 1);
-      }
+      counter[letter] = (counter[letter] || '' ) + letter;
       return counter;
     }, {});
     console.log(result);
@@ -66,7 +61,7 @@ export class MixService {
   private getKeysFromObject(object): Array<string> {
     const array = [];
     Object.keys(object).map(function(index) {
-      array.push(object[index].letter);
+      array.push(object[index].charAt(0));
     });
     return array;
   }
@@ -74,17 +69,17 @@ export class MixService {
   /**
    * @description returns a string with the longer chainletter preceded by the number of the object
    */
-  private getResultByLetter(object1: LetterRepeated, object2: LetterRepeated): string {
-    const obj1 = object1 || new LetterRepeated('', 0);
-    const obj2 = object2 || new LetterRepeated('', 0);
+  private getResultByLetter(string1: string, string2: string): string {
+    const str1 = string1 || '';
+    const str2 = string2 || '';
 
     let result = '';
-    if (obj1.repetitions > obj2.repetitions) {
-      result = '1:' + obj1.chain;
-    } else if (obj1.repetitions < obj2.repetitions) {
-      result = '2:' + obj2.chain;
-    } else if (obj1.repetitions === obj2.repetitions) {
-      result = '=:' + obj1.chain;
+    if (str1.length > str2.length) {
+      result = '1:' + str1;
+    } else if (str1.length < str2.length) {
+      result = '2:' + str2;
+    } else if (str1.length === str2.length) {
+      result = '=:' + str1;
     }
     return result;
   }
