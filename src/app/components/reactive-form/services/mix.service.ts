@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { LowerCaseCounter } from './LowerCaseCounter.class';
 
 @Injectable({
   providedIn: 'root',
@@ -15,55 +16,29 @@ export class MixService {
    *              If the maximum is in s1 as well as in s2 the prefix is =:.
    */
   public mix(string1: string, string2: string): string {
-    let keysArray, keys1, keys2 = [];
-    let result1, result2 = {};
-    const result = [];
+    let counter1, counter2;
 
     if (string1) {
-      result1 = this.getLowerCaseRepeated(string1);
-      keys1 = this.getKeysFromObject(result1);
+      counter1 = new LowerCaseCounter(string1);
+      console.log(counter1);
     }
     if (string2) {
-      result2 = this.getLowerCaseRepeated(string2);
-      keys2 = this.getKeysFromObject(result2);
+      counter2 = new LowerCaseCounter(string2);
+      console.log(counter2);
     }
 
-    keysArray = this.mergeArrays(keys1, keys2);
-    console.log('Keys', keysArray);
+    const keys = this.mergeArrays(counter1.keys, counter2.keys);
+    const result = [];
 
-    for (let i = 0; i < keysArray.length; i++) {
-      if ((result1[keysArray[i]] && result1[keysArray[i]].length > 1)
-       || (result2[keysArray[i]] && result2[keysArray[i]].length > 1)) {
-        result.push(this.getResultByLetter(result1[keysArray[i]], result2[keysArray[i]]));
+    for (let i = 0; i < keys.length; i++) {
+      const currentKey = keys[i];
+      if ((counter1.result[currentKey] && counter1.result[currentKey].length > 1)
+       || (counter2.result[currentKey] && counter2.result[currentKey].length > 1)) {
+        result.push(this.getResultByLetter(counter1.result[currentKey], counter2.result[currentKey]));
       }
     }
 
     return this.sortByLength(result).join('/');
-  }
-
-  /**
-   * @description returns an object wich properties are LetterRepeated
-   * @see LetterRepeated
-   */
-  private getLowerCaseRepeated(string: string) {
-    const array = string.match(/[a-z]/g);
-    const result = array.reduce((counter, letter) => {
-      counter[letter] = (counter[letter] || '' ) + letter;
-      return counter;
-    }, {});
-    console.log(result);
-    return result;
-  }
-
-  /**
-   * @description extract the keys of an object and return them as an array
-   */
-  private getKeysFromObject(object): Array<string> {
-    const array = [];
-    Object.keys(object).map(function(index) {
-      array.push(object[index].charAt(0));
-    });
-    return array;
   }
 
   /**
