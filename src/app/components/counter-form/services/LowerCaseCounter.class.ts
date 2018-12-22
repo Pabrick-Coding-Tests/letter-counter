@@ -6,14 +6,14 @@ export class LowerCaseCounter {
 
     constructor(str: string) {
         this.string = str;
-        this.result = this.getLowerCaseRepeated(this.string);
-        this.keys = this.getKeysFromObject(this.result);
+        this.result = this.findLowerCaseRepeated(this.string);
+        this.keys = this.findKeys(this.result);
     }
 
     /**
      * @description returns an object wich properties are the letters and their value are all that letters together
      */
-    private getLowerCaseRepeated(string: string) {
+    private findLowerCaseRepeated(string: string) {
         const array = string.match(/[a-z]/g);
         const result = array.reduce((counter, letter) => {
             counter[letter] = (counter[letter] || '' ) + letter;
@@ -25,10 +25,10 @@ export class LowerCaseCounter {
     /**
      * @description extract the keys of an object and return them as an array
      */
-    private getKeysFromObject(object): Array<string> {
+    private findKeys(object): Array<string> {
         const array = [];
         Object.keys(object).map(function(index) {
-        array.push(object[index].charAt(0));
+            array.push(object[index].charAt(0));
         });
         return array;
     }
