@@ -6,10 +6,12 @@
 
     First let us count the frequency of each lowercase letters in s1 and s2.
 
+    ```
     s1 = "A aaaa bb c"
     s2 = "& aaa bbb c d"
     s1 has 4 'a', 2 'b', 1 'c'
     s2 has 3 'a', 3 'b', 1 'c', 1 'd'
+    ```
 
     So the maximum for 'a' in s1 and s2 is 4 from s1; the maximum for 'b' is 3 from s2. In the following we will not consider letters when the maximum of their occurrences is less than or equal to 1.
 
