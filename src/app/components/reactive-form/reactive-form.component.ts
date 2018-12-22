@@ -21,7 +21,7 @@ export class ReactiveFormComponent implements OnInit {
   }
 
   onSubmit(form: FormGroup) {
-    this.mixService.mix(form.value.string1, form.value.string2);
+    console.log(this.mixService.mix(form.value.string1, form.value.string2));
     console.log('Valid?', form.valid);
     console.log('Str1', form.value.string1);
     console.log('Str2', form.value.string2);
