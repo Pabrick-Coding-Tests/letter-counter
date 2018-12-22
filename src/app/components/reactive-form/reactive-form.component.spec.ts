@@ -1,4 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ReactiveFormComponent } from './reactive-form.component';
 
@@ -8,6 +11,10 @@ describe('ReactiveFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        BrowserDynamicTestingModule,
+        ReactiveFormsModule
+      ],
       declarations: [ ReactiveFormComponent ]
     })
     .compileComponents();
@@ -19,7 +26,7 @@ describe('ReactiveFormComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create this form', () => {
     expect(component).toBeTruthy();
   });
 });
