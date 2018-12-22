@@ -1,0 +1,13 @@
+<form [formGroup]="reactiveForm" (ngSubmit)="onSubmit(reactiveForm)">
+  <div class="form-block">
+    <label>String 1:</label>
+    <input formControlName="string1" placeholder="Write some text">
+  </div>
+
+  <div class="form-block">
+    <label>String 2:</label>
+    <input formControlName="string2" placeholder="Write some text">
+  </div>
+  
+  <button type="submit">MIX IT!</button>
+</form>
