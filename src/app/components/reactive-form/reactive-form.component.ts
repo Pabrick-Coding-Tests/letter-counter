@@ -10,6 +10,7 @@ import { MixService } from './services/mix.service';
 export class ReactiveFormComponent implements OnInit {
 
   public reactiveForm: FormGroup;
+  public result: Array<string>;
 
   constructor(private mixService: MixService) { }
 
@@ -21,10 +22,13 @@ export class ReactiveFormComponent implements OnInit {
   }
 
   onSubmit(form: FormGroup) {
-    console.log(this.mixService.mix(form.value.string1, form.value.string2));
-    console.log('Valid?', form.valid);
-    console.log('Str1', form.value.string1);
-    console.log('Str2', form.value.string2);
+    if (form.value.string1 || form.value.string2) {
+      const solution = this.mixService.mix(form.value.string1, form.value.string2);
+      console.log(solution);
+      this.result = solution.replace(/[/]/g, '/*').split('*');
+    } else {
+      alert('You should write something in the inputs first!');
+    }
   }
 
 }

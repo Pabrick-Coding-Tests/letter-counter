@@ -1,2 +1,49 @@
-input
-    width: 90%
+.reactive-form
+    display: block
+    width: 80%
+    margin: 0 auto
+    text-align: center
+
+    label, input, button
+        font-family: 'Quicksand'
+
+    label
+        display: block
+        color: #EBE5F0
+        margin-bottom: 4px
+        font-size: 20px
+        text-align: left
+
+    input
+        width: 100%
+        margin-bottom: 10px
+        font-size: 20px
+        padding: 10px
+        box-sizing: border-box
+        text-align: left
+
+    button
+        cursor: pointer
+        width: 50%
+        margin: 10px auto
+        font-size: 30px
+        color: #EBE5F0
+        background-color: #3900ff
+        border: 6px solid #3900ff
+        &:hover
+            color: #3900ff
+            background-color: #EBE5F0
+
+    .form-block-result
+        margin-top: 10px
+        font-size: 30px
+        background-color: #FFFFFF
+        word-break: break-all
+
+        span
+            font-family: 'Quicksand'
+            color: #3900ff
+            &:nth-child(odd)
+                background-color: #EBE5F0
+            &:nth-child(even)
+                background-color: #FFFFFF

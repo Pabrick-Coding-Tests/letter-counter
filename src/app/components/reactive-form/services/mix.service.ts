@@ -56,6 +56,7 @@ export class MixService {
       }
       return counter;
     }, {});
+    console.log(result);
     return result;
   }
 
