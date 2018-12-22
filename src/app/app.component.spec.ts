@@ -1,7 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { ReactiveFormModule } from './components/reactive-form/reactive-form.module';
+import { CounterFormModule } from './components/counter-form/counter-form.module';
 
 import { AppComponent } from './app.component';
 
@@ -10,7 +10,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        ReactiveFormModule,
+        CounterFormModule,
       ],
       declarations: [ AppComponent ],
     }).compileComponents();

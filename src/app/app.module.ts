@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ReactiveFormModule } from './components/reactive-form/reactive-form.module';
+import { CounterFormModule } from './components/counter-form/counter-form.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +10,7 @@ import { ReactiveFormModule } from './components/reactive-form/reactive-form.mod
   ],
   imports: [
     BrowserModule,
-    ReactiveFormModule
+    CounterFormModule
   ],
   providers: [],
   bootstrap: [AppComponent]

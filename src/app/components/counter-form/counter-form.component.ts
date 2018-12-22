@@ -3,19 +3,19 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { MixService } from './services/mix.service';
 
 @Component({
-  selector: 'app-reactive-form',
-  templateUrl: './reactive-form.component.html',
-  styleUrls: ['./reactive-form.component.sass']
+  selector: 'app-counter-form',
+  templateUrl: './counter-form.component.html',
+  styleUrls: ['./counter-form.component.sass']
 })
-export class ReactiveFormComponent implements OnInit {
+export class CounterFormComponent implements OnInit {
 
-  public reactiveForm: FormGroup;
+  public counterForm: FormGroup;
   public result: Array<string>;
 
   constructor(private mixService: MixService) { }
 
   ngOnInit() {
-    this.reactiveForm = new FormGroup({
+    this.counterForm = new FormGroup({
       string1: new FormControl(''),
       string2: new FormControl('')
     });

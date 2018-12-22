@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { ReactiveFormComponent } from './reactive-form.component';
+import { CounterFormComponent } from './counter-form.component';
 
 @NgModule({
-  declarations: [ ReactiveFormComponent ],
+  declarations: [ CounterFormComponent ],
   imports: [
     CommonModule,
     ReactiveFormsModule
   ],
-  exports: [ ReactiveFormComponent ]
+  exports: [ CounterFormComponent ]
 })
-export class ReactiveFormModule { }
+export class CounterFormModule { }

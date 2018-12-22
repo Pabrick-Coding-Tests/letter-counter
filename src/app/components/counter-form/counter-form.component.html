@@ -1,7 +1,7 @@
 <form
-  class="reactive-form"
-  [formGroup]="reactiveForm"
-  (ngSubmit)="onSubmit(reactiveForm)">
+  class="counter-form"
+  [formGroup]="counterForm"
+  (ngSubmit)="onSubmit(counterForm)">
 
   <div class="form-block">
     <label>String 1:</label>
@@ -13,7 +13,7 @@
     <input formControlName="string2" placeholder="Write some text">
   </div>
   
-  <button type="submit" [disabled]="reactiveForm.invalid">MIX IT!</button>
+  <button type="submit" [disabled]="counterForm.invalid">MIX IT!</button>
 
   <div class="form-block">
     <div class="form-block-result" *ngIf="result">

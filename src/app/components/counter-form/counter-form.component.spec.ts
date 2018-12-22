@@ -3,11 +3,11 @@ import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/t
 
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { ReactiveFormComponent } from './reactive-form.component';
+import { CounterFormComponent } from './counter-form.component';
 
-describe('ReactiveFormComponent', () => {
-  let component: ReactiveFormComponent;
-  let fixture: ComponentFixture<ReactiveFormComponent>;
+describe('CounterFormComponent', () => {
+  let component: CounterFormComponent;
+  let fixture: ComponentFixture<CounterFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -15,13 +15,13 @@ describe('ReactiveFormComponent', () => {
         BrowserDynamicTestingModule,
         ReactiveFormsModule
       ],
-      declarations: [ ReactiveFormComponent ]
+      declarations: [ CounterFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ReactiveFormComponent);
+    fixture = TestBed.createComponent(CounterFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
